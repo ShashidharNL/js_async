@@ -34,4 +34,18 @@ async function loadFirstItem() {
     console.log("Error:", err.message);
   }
 }
+
+async function loadDashboard() {
+  try {
+    const [user, config] = await Promise.all([getUser(1), getConfig()]);
+
+    console.log(
+      `User:${user.name} | theme:${config.theme} | lang:${config.lang} `,
+    );
+  } catch (err) {
+    console.log("Error: ", err.message);
+  }
+}
+
 loadFirstItem();
+loadDashboard();
